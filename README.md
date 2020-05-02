@@ -30,21 +30,24 @@ public static void Initialize(...)
 
 ### Place names
 
+1. Start [SaintCoinach.Cmd](https://github.com/ufx/SaintCoinach/releases) → execute `exd` command
+1. Run [script](https://nodejs.org) in `SaintCoinach.Cmd/[FFXIV_VERSION]/exd` directory → build `PlaceName.json`
 ```js
 import fs from 'fs'
 
 const data = Object.fromEntries(fs
-  .readFileSync('exd/TerritoryType.csv', 'utf-8')
+  .readFileSync('./TerritoryType.csv', 'utf-8')
   .split('\n').map(line => line.split(',')).slice(3)
   .map(v => [parseInt(v[0]).toString(16), eval(v[6])]))
 
-fs.writeFileSync('./src/PlaceName.json', JSON.stringify(data), 'utf-8')
+fs.writeFileSync('./PlaceName.json', JSON.stringify(data), 'utf-8')
 ```
 
 ### Overlay
 
 1. Clone [ffxiv-twitter-location](https://github.com/ChalkPE/ffxiv-twitter-location)
 1. Run `yarn install`
+1. Copy `PlaceName.json` to `./src` directory
 1. Create `./.env` and set [environment variables](https://parceljs.org/env.html)
     - `CONSUMER_KEY`= Consumer API key
     - `CONSUMER_SECRET`= Consumer API secret key
@@ -52,7 +55,7 @@ fs.writeFileSync('./src/PlaceName.json', JSON.stringify(data), 'utf-8')
     - `ACCESS_TOKEN_SECRET`= Access token secret
 1. Run `yarn build`
 1. Add custom `MiniParse` overlay to [ACT](https://advancedcombattracker.com) OverlayPlugin
-1. Set `URL` to `file:///_____/ffxiv-twitter-location/dist/index.html` (replace `_____` with `pwd`)
+1. Set `URL` to `file:///[OVERLAY_PROJECT_DIRECTORY]/dist/index.html`
 
 ## License
 [MIT](LICENSE)
