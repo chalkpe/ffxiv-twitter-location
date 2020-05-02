@@ -1,0 +1,22 @@
+{
+  "name": "ffxiv-twitter-location",
+  "version": "1.0.0",
+  "description": "Update the location of your Twitter profile same as FFXIV",
+  "main": "index.html",
+  "repository": "https://github.com/ChalkPE/ffxiv-twitter-location",
+  "author": "ChalkPE",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "OverlayPlugin": "https://github.com/ngld/OverlayPlugin",
+    "twitter-lite": "^0.11.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "scripts": {
+    "serve": "parcel serve index.html",
+    "build": "parcel build index.html --public-url ./"
+  },
+  "browserslist": "chrome 75"
+}
